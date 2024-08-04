@@ -7,7 +7,34 @@
 </head>
 <body>
     <h1>
-        Hello World!
+        Video Info
     </h1>
+    <form>
+        <div>
+            <label>
+                Select a video
+            </label>
+            <input type="file" accept="video/*">
+        </div>
+        <button type="submit">
+            Get Info
+        </button>
+    </form>
+    <h2 id="result">
+
+    </h2>
+    <script>
+        const form = document.querySelector("form")
+        form.addEventListener("submit", (event) => {
+            event.preventDefault()
+            const { path: filePath} = document.querySelector("input").files[0]
+            window.electron.submitVideo(filePath)
+        })
+
+        window.electron.receiveVideoMetadata((duration) => {
+            const seconds = parseInt(duration)
+            document.querySelector("#result").textContent = `Video is ${seconds} seconds long`
+        })
+    </script>
 </body>
 </html>
