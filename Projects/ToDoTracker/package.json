@@ -1,0 +1,17 @@
+{
+  "name": "to-do-tracker",
+  "version": "1.0.0",
+  "description": "A simple to do list tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "itsskofficial",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^31.3.1"
+  }
+}
