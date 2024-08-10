@@ -1,21 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Todo</title>
-</head>
-<body>
-    <form>
-        <div>
-            <label>
-                Enter your todo
-            </label>
-            <input type="text" autofocus />
-        </div>
-        <button type="submit">
-            Add
-        </button>
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add New Todo</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label> Enter your todo </label>
+                <input type="text" autofocus />
+            </div>
+            <button type="submit">Add</button>
+        </form>
+        <script type="text/javascript">
+            document.querySelector("form").addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const { value } = document.querySelector("input");
+                window.electron.send("todo:add", value);
+            });
+        </script>
+    </body>
 </html>

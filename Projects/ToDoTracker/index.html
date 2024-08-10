@@ -1,13 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do Tracker</title>
-</head>
-<body>
-    <h1>
-        To Do
-    </h1>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To Do Tracker</title>
+    </head>
+    <body>
+        <h1>To Dos</h1>
+        <ul></ul>
+        <script>
+            window.electron.on("todo:add", (todo) => {
+                const li = document.createElement("li");
+                const text = document.createTextNode(todo);
+
+                li.appendChild(text);
+                document.querySelector("ul").appendChild(li);
+            });
+
+            window.electron.on("todo:clear", () => {
+                const ul = document.querySelector("ul");
+                ul.innerHTML = "";
+            });
+        </script>
+    </body>
 </html>
